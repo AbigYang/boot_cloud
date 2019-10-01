@@ -16,6 +16,8 @@
 
     <modules>
         <module>filter_interceptor</module>
+        <module>springboot-redis</module>
+        <module>springboot-data-jpa</module>
     </modules>
 
     <properties>
