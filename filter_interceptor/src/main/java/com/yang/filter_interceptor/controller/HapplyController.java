@@ -16,7 +16,7 @@ public class HapplyController {
         return "yep";
     }
 
-    @GetMapping("nop")
+    @GetMapping("/nop")
     public String getNop() {
         System.out.println("/happly/nop start....");
         return "nop";
