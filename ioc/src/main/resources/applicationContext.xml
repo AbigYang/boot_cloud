@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="djNewsListener" class="com.yang.ioc.bean.NewsListener">
+    </bean>
+    <bean id="djNewspersister" class="com.yang.ioc.bean.NewsPersister">
+        <property name="dateTime" ref="localDateTime"/>
+    </bean>
+    <bean id="localDateTime" class="com.yang.ioc.config.PersisterFactoryBean"/>
+    <!--    构造方法注入-->
+    <!--    <bean id="djNewsProvider" class="com.yang.ioc.bean.NewsProvider">-->
+    <!--        <constructor-arg ref="djNewsListener"/>-->
+    <!--        <constructor-arg ref="djNewspersister"/>-->
+    <!--        <constructor-arg value="testIOC"/>-->
+    <!--        &lt;!&ndash; 调用该类型的构造方法注入&ndash;&gt;-->
+    <!--        <constructor-arg value="123321" type="int" index="4"/>-->
+    <!--        <constructor-arg value="147258" index="3"/>-->
+    <!--    </bean>-->
+    <!--    setter和构造方法可以混用-->
+    <bean id="djNewsProvider" class="com.yang.ioc.bean.NewsProvider">
+        <property name="listener" ref="djNewsListener"/>
+        <property name="dependence" value="testIOCC"/>
+        <!--        dependence2-->
+        <constructor-arg value="1123" type="int"/>
+    </bean>
+    <bean id="newsBean" class="com.yang.ioc.bean.NewsBean" scope="prototype"/>
+    <bean id="persisterFactoryAware" class="com.yang.ioc.config.PersisterFactoryAware"/>
+</beans>
